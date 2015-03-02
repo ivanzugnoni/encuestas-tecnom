@@ -6,12 +6,12 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 		"id":"AR-CHEVROLET-ENCUESTA-POSTENTREGA-SERVICIOS-V1.0",
 		"tipo":"encuesta",
 		"version":"1.0",
-		"descripcion":"Encuesta de satisfacción de servicios de postventa",		
+		"descripcion":"Encuesta de satisfacción de servicios de postventa",
 		"preguntas":[
 			{
 				"id":"grado-satisfaccion-concesionario",
 				"tipo":"multiple-choice",
-				"titulo":"¿Cuál es su grado de satisfacción con el concesionario en esta última visita?",			
+				"titulo":"¿Cuál es su grado de satisfacción con el concesionario en esta última visita?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -23,7 +23,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"atencion-educacion-servicio",
 				"tipo":"multiple-choice",
-				"titulo":"¿Cómo calificaría la atención y educación del asesor de servicio?",			
+				"titulo":"¿Cómo calificaría la atención y educación del asesor de servicio?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -35,7 +35,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"tiempo-atender-necesidades",
 				"tipo":"multiple-choice",
-				"titulo":"¿Cuál es su satisfacción con respecto al tiempo dedicado del asesor de servicio para comprender sus necesidades?",			
+				"titulo":"¿Cuál es su satisfacción con respecto al tiempo dedicado del asesor de servicio para comprender sus necesidades?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -47,7 +47,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"informacion-trabajos-realizados",
 				"tipo":"multiple-choice",
-				"titulo":"¿Cómo calificaría al asesor de servicio en cuanto a la información brindada sobre los trabajos realizados?",			
+				"titulo":"¿Cómo calificaría al asesor de servicio en cuanto a la información brindada sobre los trabajos realizados?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -59,7 +59,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"tiempo-entrega",
 				"tipo":"multiple-choice",
-				"titulo":"¿Se entregó su vehículo en fecha y hora acordada?",	
+				"titulo":"¿Se entregó su vehículo en fecha y hora acordada?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -71,7 +71,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"reparaciones-primer-visita",
 				"tipo":"multiple-choice",
-				"titulo":"¿Las reparaciones fueron realizadas correctamente en la primera visita?",	
+				"titulo":"¿Las reparaciones fueron realizadas correctamente en la primera visita?",
 				"opciones":[
 					{"opcion":"1 Muy insatisfecho","valor":1},
 					{"opcion":"2 Insatisfecho","valor":2},
@@ -83,7 +83,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 			{
 				"id":"comentarios-adicionales",
 				"tipo":"texto-parrafo",
-				"titulo":"¿Desea dejar algún comentario o sugerencia?"			
+				"titulo":"¿Desea dejar algún comentario o sugerencia?"
 			}
 		]
 	}

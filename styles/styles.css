@@ -1,3 +1,33 @@
 #logoTecnom {
 	margin-top: 10px;
 }
+
+.encuestaDescription {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.formText {
+    font-weight: normal;
+}
+
+.questionTitle {
+    padding-left: 10px;
+    padding-top: 5px;
+    border-bottom: 1px solid #ddd;
+    border-top: 4px solid #ddd;
+}
+
+.optionsContainer {
+    margin-left: 30px;
+    margin-top: 2px;
+}
+
+.debugger {
+    position: fixed;
+    left: 100px;
+    top: 150px;
+    background-color: #aaa;
+    width:200px;
+}
+

@@ -4,12 +4,29 @@
 
 		<!-- TIPO MULTIPLE CHOICE -->
 		<div ng-if="pregunta.tipo == 'multiple-choice'">
-			<pregunta-multiple-choice>
+			<pregunta-multiple-choice></pregunta-multiple-choice>
 		</div>
 
 		<!-- TIPO TEXTO PARRAFO -->
 		<div ng-if="pregunta.tipo == 'texto-parrafo'">
-			<pregunta-texto-parrafo>
+			<pregunta-texto-parrafo></pregunta-texto-parrafo>
+		</div>
+
+		<!-- TIPO -->
+		<!-- TIPO -->
+		<!-- TIPO -->
+
+	</div>
+
+
+	<!-- debugger -->
+	<div class="debugger">
+		<strong>DEBUGGER</strong>
+		<div ng-repeat="pregunta in encuesta.preguntas">
+			Pregunta {{$index}} - respuesta: {{pregunta.respuesta}}
 		</div>
 	</div>
+	<!-- debugger -->
+
+
 </div>
