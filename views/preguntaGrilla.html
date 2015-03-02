@@ -1,1 +1,22 @@
-preguntaGrilla.html
+<div class="form-group">
+    <label>{{pregunta.titulo}}</label>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td></td>
+                <td ng-repeat="columna in pregunta.columnas">{{columna}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="fila in pregunta.filas">
+                <td>{{fila}}</td>
+                <td ng-repeat="chk in pregunta.columnas">
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions{{$parent.$index}}" id="inlineRadio{{$parent.$index}}" value="option1">
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

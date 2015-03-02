@@ -25,6 +25,16 @@
 		<div ng-repeat="pregunta in encuesta.preguntas">
 			Pregunta {{$index}} - respuesta: {{pregunta.respuesta}}
 		</div>
+
+		<!-- TIPO FECHA -->
+		<div ng-if="pregunta.tipo == 'fecha'">
+			<pregunta-fecha>
+		</div>
+
+        <!-- TIPO GRILLA -->
+        <div ng-if="pregunta.tipo == 'grilla'">
+            <pregunta-grilla>
+        </div>
 	</div>
 	<!-- debugger -->
 

@@ -9,6 +9,7 @@ encuestasApp
 })
     .directive('preguntaTextoParrafo', function(){
         return {
+            // puede ser usado como Elemento y Atributo
             restrict: 'EA',
             templateUrl: 'views/preguntaTextoParrafo.html'
         };
