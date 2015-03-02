@@ -1,3 +1,15 @@
 <div>
-	<h1>ENCUESTAS!</h1>
+	<h1>{{encuesta.descripcion}}</h1>
+	<div ng-repeat="pregunta in encuesta.preguntas">
+
+		<!-- TIPO MULTIPLE CHOICE -->
+		<div ng-if="pregunta.tipo == 'multiple-choice'">
+			<pregunta-multiple-choice>
+		</div>
+
+		<!-- TIPO TEXTO PARRAFO -->
+		<div ng-if="pregunta.tipo == 'texto-parrafo'">
+			<pregunta-texto-parrafo>
+		</div>
+	</div>
 </div>
