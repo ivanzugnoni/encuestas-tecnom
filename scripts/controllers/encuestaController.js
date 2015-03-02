@@ -77,7 +77,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 					{"opcion":"2 Insatisfecho","valor":2},
 					{"opcion":"3 Medianamente satisfecho","valor":3},
 					{"opcion":"4 Satisfecho","valor":4},
-					{"opcion":"5 Muy satisfecho","valor":5}
+					{"opcion":"5 Muy satisfecho","valor":5},
 				]
 			},
 			{
@@ -88,6 +88,6 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
 		]
 	}
 
+	$scope.radioModel = '5 Muy satisfecho';
 
 }]);
-

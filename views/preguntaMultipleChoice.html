@@ -1,1 +1,7 @@
-<label>({{pregunta.tipo}})</label><span> {{pregunta.titulo}}</span>
+<div class="form-group">
+    <label>{{pregunta.titulo}}</label>
+    <pre>{{radioModel || 'null'}}</pre>
+	<div class="btn-group">
+	    <label ng-repeat="op in pregunta.opciones" class="btn btn-primary" ng-model="$parent.radioModel" btn-radio="'{{op.opcion}}'">{{op.valor}}</label>
+	</div>
+</div>
