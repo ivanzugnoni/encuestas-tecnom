@@ -10,7 +10,7 @@ var encuestasApp = angular.module('encuestasApp', [
 encuestasApp.config(['$routeProvider', function($routeProvider){
     $routeProvider
     .when('/', {
-        templateUrl: '/templates/encuesta.html',
+        templateUrl: '/views/encuesta.html',
         controller: 'encuestaController'
     })
     .otherwise({
