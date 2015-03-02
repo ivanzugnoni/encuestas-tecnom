@@ -1,1 +1,8 @@
-preguntaNumero.html
+<div class="form-group">
+    <div class="questionTitle">
+        <label>{{pregunta.titulo}}</label>
+    </div>
+    <div class="containerOptions">
+            <input class="form-control formBox" ng-model="pregunta.respuesta" type="number" name="{{pregunta.id}}">
+    </div>
+</div>
