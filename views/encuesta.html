@@ -11,5 +11,15 @@
 		<div ng-if="pregunta.tipo == 'texto-parrafo'">
 			<pregunta-texto-parrafo>
 		</div>
+
+		<!-- TIPO FECHA -->
+		<div ng-if="pregunta.tipo == 'fecha'">
+			<pregunta-fecha>
+		</div>
+
+        <!-- TIPO GRILLA -->
+        <div ng-if="pregunta.tipo == 'grilla'">
+            <pregunta-grilla>
+        </div>
 	</div>
 </div>
