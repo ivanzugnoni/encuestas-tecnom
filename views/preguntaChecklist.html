@@ -1,1 +1,11 @@
-preguntaChecklist.html
+<div class="form-group">
+    <div class="questionTitle">
+        <label>{{pregunta.titulo}}</label>
+    </div>
+    <div class="optionsContainer" ng-repeat="op in pregunta.opciones">
+        <label class="formText">
+            <input ng-model="pregunta.respuesta" type="radio" name="{{pregunta.id}}" value="{{op.valor}}">
+            {{op.opcion}}
+        </label>
+    </div>
+</div>

@@ -7,14 +7,35 @@
 			<pregunta-multiple-choice></pregunta-multiple-choice>
 		</div>
 
+		<!-- TIPO TEXTO-->
+		<div ng-if="pregunta.tipo == 'texto'">
+			<pregunta-texto></pregunta-texto>
+		</div>
+
 		<!-- TIPO TEXTO PARRAFO -->
 		<div ng-if="pregunta.tipo == 'texto-parrafo'">
 			<pregunta-texto-parrafo></pregunta-texto-parrafo>
 		</div>
 
-		<!-- TIPO -->
-		<!-- TIPO -->
-		<!-- TIPO -->
+		<!-- TIPO CHECKLIST-->
+		<div ng-if="pregunta.tipo == 'checklist'">
+			<pregunta-checklist></pregunta-checklist>
+		</div>
+
+		<!-- TIPO FECHA-->
+		<div ng-if="pregunta.tipo == 'fecha'">
+			<pregunta-fecha></pregunta-fecha>
+		</div>
+
+		<!-- TIPO NUMERO-->
+		<div ng-if="pregunta.tipo == 'numero'">
+			<pregunta-numero></pregunta-numero>
+		</div>
+
+		<!-- TIPO GRILLA-->
+		<div ng-if="pregunta.tipo == 'grilla'">
+			<pregunta-grilla></pregunta-grilla>
+		</div>
 
 	</div>
 

@@ -11,7 +11,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
         "preguntas":[
             {
                 "id":"grado-satisfaccion-concesionario",
-                "tipo":"multiple-choice",
+                "tipo":"checklist",
                 "titulo":"¿Cuál es su grado de satisfacción con el concesionario en esta última visita?",
                 "opciones":[
                     {"opcion":"1 Muy insatisfecho","valor":1},
