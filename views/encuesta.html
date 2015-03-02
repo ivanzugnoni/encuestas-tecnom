@@ -42,20 +42,13 @@
 
 	<!-- debugger -->
 	<div class="debugger">
-		<strong>DEBUGGER</strong>
-		<div ng-repeat="pregunta in encuesta.preguntas">
-			Pregunta {{$index}} - respuesta: {{pregunta.respuesta}}
+		<label ng-click="debugger = !debugger" style="cursor: pointer;">ABRIR/CERRAR</label>
+		<div ng-show="debugger">
+			<b><u>DEBUGGER</b></u>
+			<div ng-repeat="pregunta in encuesta.preguntas">
+				<b><i>Pregunta {{$index}} - respuesta:</i></b> {{pregunta.respuesta}}
+			</div>
 		</div>
-
-		<!-- TIPO FECHA -->
-		<div ng-if="pregunta.tipo == 'fecha'">
-			<pregunta-fecha>
-		</div>
-
-        <!-- TIPO GRILLA -->
-        <div ng-if="pregunta.tipo == 'grilla'">
-            <pregunta-grilla>
-        </div>
 	</div>
 	<!-- debugger -->
 
