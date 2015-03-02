@@ -87,6 +87,11 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
                 "titulo":"¿Desea dejar algún comentario o sugerencia?"
             },
             {
+                "id":"nombre",
+                "tipo":"texto",
+                "titulo":"Opcionalmente deje su nombre"
+            },
+            {
                 "id":"fecha-entrega",
                 "tipo":"fecha",
                 "titulo":"¿En que fecha se le entregó la unidad?"

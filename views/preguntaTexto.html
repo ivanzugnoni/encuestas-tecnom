@@ -1,1 +1,8 @@
-preguntaTexto.html
+<div class="form-group">
+    <div class="questionTitle">
+        <label>{{pregunta.titulo}}</label>
+    </div>
+    <div class="optionsContainer">
+            <input class="form-control" ng-model="pregunta.respuesta" name="{{pregunta.id}}">
+    </div>
+</div>
