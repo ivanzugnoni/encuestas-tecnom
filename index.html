@@ -13,49 +13,166 @@
 	<script src="/static/lib/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="http://code.angularjs.org/1.0.8/i18n/angular-locale_es-es.js"></script>
+
 	<script src="/scripts/app.js"></script>
-	<script src="/scripts/controllers/encuestaController.js"></script>
 	<script src="/scripts/directives/encuestaDirectives.js"></script>
+	<script src="/scripts/controllers/encuestaController.js"></script>
+	<script src="/scripts/controllers/navBarController.js"></script>
+	<script src="/scripts/controllers/loaderController.js"></script>
+    <script src="/scripts/controllers/notificacionesController.js"></script>
+    <script src="/scripts/services/encuestaServices.js"></script>
+    <script src="/scripts/services/buscadorServices.js"></script>
+    <script src="/scripts/services/notificacionesServices.js"></script>
+	<script src="/scripts/services/userServices.js"></script>
 
 	<link rel="stylesheet" href="/static/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/lib/font-awesome-4.3.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="/styles/styles.css">
 
 </head>
 <body ng-app="encuestasApp">
+    <input type="hidden" ID="LabComCore_PageData_View" runat="server" />
+    <toast></toast>
+    <div id="wrapper" style="padding-left: 0;">
+        <!-- Navbar - Mastermenu -->
+        <nav ng-controller="NavBarCtrl" class="navbar navbar-inverse navbar-fixed-top" id="NavBarLC" role="navigation">
+            <div class="form-group input-group" id="BuscadorMobilePanel" ng-class="{'hidden':!buscador.show}" style="margin: 7px 10px 0 10px;">
+                <input type="text" class="form-control" ng-esc="buscador.cerrar()" id="BuscadorGlobal" focus-me="buscador.show" ng-model="buscador.string" ng-enter="buscador.buscar()" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-class="{disabled: buscador.loading}" type="button" ng-click="buscador.buscar()">
+                        <i ng-class="{'hidden':buscador.loading}" class="fa fa-search"></i><i ng-class="{'hidden':!buscador.loading}" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                    <button class="btn btn-default" type="button" ng-click="buscador.cerrar()"><i class="fa fa-times"></i></button>
+                </span>
+            </div>
 
-	<!-- NAVBAR -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a href="#/"><img id="logoTecnom" src="static/img/logoTecnom.png"></a>
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#/">Link</a></li>
-				<li class="dropdown">
-				<a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li class="divider"></li>
-				<li><a href="#">Separated link</a></li>
-				</ul>
-				</li>
-			</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
+            <div class="navbar-header header-nosearch">
 
-	<div class="container" ng-view>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed;" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-	</div>
+                <a ng-href="#/">
+                    <img src="static/img/logoSurTecnom.png" id="logoTecnom" /></a>
 
+                <button class="btn visible-xs" ng-click="buscador.abrir()" id="BuscadorMobileButtonTo" style="background-color: #000000; border-color: #999999; color: white; margin-top: 9px; margin-right: 10px; float: right;" type="button"><i class="fa fa-search"></i></button>
+
+                <ul class="nav navbar-right navbar-user header-nosearch notifMobile visible-xs">
+                    <li class="dropdown messages-dropdown">
+                        <button class="btn visible-xs" ng-click="notificaciones.resize()" style="background-color: #000000; border-color: #999999; color: white; margin-top: 9px; margin-right: 10px; float: right;" type="button">
+                            <i ng-class="{hayNotis: notificaciones.news.length > 0, noHayNotis: notificaciones.news.length == 0}" class="fa fa-envelope notifAdviceLabCom"></i>
+                        </button>
+
+                        <ul class="dropdown-menu notifLabCom ulNotifMobile" id="ulNotifMobile" ng-cloak>
+                            <li ng-show="notificaciones.news.length == 0" class="dropdown-header noNotif">No tiene ninguna notificación pendiente</li>
+                            <li ng-show="notificaciones.news.length > 0" class="divider"></li>
+                            <div ng-repeat="n in notificaciones.news" class="notificacionLabCom">
+                                <li class="divider" ng-hide="$first"></li>
+                                <li class="message-preview clearfix">
+                                    <a href="#" ng-click="notificaciones.redirect(n)" class="linkNotif">
+                                        <span class="message">{{ n.Detalle }}</span>
+                                        <span class="time"><i class="fa fa-clock-o"></i><span am-time-ago="{{n.Fecha | JsDate}}"></span></span>
+                                    </a>
+                                    <a title="Marcar como Leída" class="closeNotif" ng-click="notificaciones.readed(n);" stop-propagation><i class="fa fa-circle-o "></i><i class="fa fa-circle "></i></a>
+                                </li>
+                            </div>
+                            <li ng-show="notificaciones.news.length == 0" class="divider"></li>
+                            <li class="verTodasNotif"><a href="#/notificaciones">Ver todas las notificaciones <span class="badge">{{ notificaciones.news.length }}</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div collapse="navCollapsed" class="collapse navbar-collapse header-nosearch">
+                <ul class="nav navbar-nav navbar-right navbar-user header-nosearch">
+
+
+                    <li class="messages-dropdown hidden-xs" dropdown is-open="statusMensajes.isopen">
+                        <a href="" class="dropdown-toggle" dropdown-toggle ng-disabled="disabled" ng-click="notificaciones.resize()">
+                            <i ng-class="{hayNotis: notificaciones.news.length > 0}" class="fa fa-envelope notifAdviceLabCom"></i>
+                            <span ng-class="{'bg-danger': notificaciones.news.length > 0}" class="badge">{{ notificaciones.news.length }}</span>
+                            <b class="caret" style="border-top-color: #999999;border-bottom-color: #999999;"></b>
+                        </a>
+                        <ul class="dropdown-menu notifLabCom" role="menu" id="ulNotifPc" ng-cloak>
+                            <li ng-show="notificaciones.news.length == 0" class="dropdown-header noNotif">No tiene ninguna notificación pendiente</li>
+                            <li ng-show="notificaciones.news.length > 0" class="divider"></li>
+                            <div ng-repeat="n in notificaciones.news">
+                                <li class="divider" ng-hide="$first"></li>
+                                <li class="message-preview clearfix">
+                                    <a href="#" ng-click="notificaciones.redirect(n)" class="linkNotif">
+                                        <span class="message">{{ n.Detalle }}</span>
+                                        <span class="time"><i class="fa fa-clock-o"></i><span am-time-ago="{{n.Fecha | JsDate}}"></span></span>
+                                    </a>
+                                    <a title="Marcar como Leída" class="closeNotif" ng-click="notificaciones.readed(n)" stop-propagation><i class="fa fa-circle-o "></i><i class="fa fa-circle "></i></a>
+                                </li>
+                            </div>
+                            <li ng-show="notificaciones.news.length == 0" class="divider"></li>
+                            <li class="verTodasNotif"><a href="#/notificaciones">Ver todas las notificaciones <span class="badge">{{ notificaciones.news.length }}</span></a></li>
+                        </ul>
+                    </li>
+                    <li dropdown class="hidden-xs" is-open="opciones.isopen">
+                        <a href="" class="dropdown-toggle" dropdown-toggle ng-disabled="disabled">Opciones
+                            <b class="caret" style="border-top-color: #999999;border-bottom-color: #999999;"></b>
+                        </a>
+                        <ul class='dropdown-menu'>
+                            <!--<li ng-repeat="ln in me.links"><a ng-href="{{ln.URL}}"><i class='fa' ng-class="ln.icon"></i> {{ ln.descripcion }}</a></li>-->
+                            <li><a ng-href="#/"><i class='fa fa-check-square-o'></i> Unidades 0km</a></li>
+                            <li><a ng-href=""><i class='fa fa-check-square-o'></i> Unidades de Plan de Ahorro</a></li>
+                        </ul>
+                    </li>
+                    <li class="visible-xs open">
+                        <ul class="dropdown-menu">
+                             <li ng-repeat="ln in me.links"><a ng-href="{{ln.URL}}" ng-click="navCollapsed=true"><i class='fa' ng-class="ln.icon"></i> {{ ln.descripcion }}</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button ng-click="buscador.abrir()" class="btn hidden-xs" style="background-color: #000000; border-color: #999999; color: white; margin-top: 9px; margin-right: 10px;" type="button"><i class="fa fa-search"></i></button>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="fullDiv" ng-if="buscador.show && buscador.results != null" ng-cloak>
+                <div id="LabComSearchResults" ng-class="{'hidden':!buscador.results==null}" >
+
+                    <div class="well well-sm">
+                        <ul id="listadoRespuestasBuscador" class="list-unstyled" ng-esc="buscador.cerrar()">
+                            <li ng-hide="buscador.empty"><i class="fa fa-search"></i>Resultados Para: '{{ buscador.last }}'</li>
+                            <li ng-show="buscador.overflow"><i class="fa fa-info-circle"></i>Su criterio de búsqueda coincide con demasiados resultados, por favor intente refinar la búsqueda.</li>
+                            <li ng-show="buscador.empty"><i class="fa fa-exclamation-circle"></i>No se encontró ningún resultado que coincida con su criterio de búsqueda.</li>
+                        </ul>
+                        <div id="limpiarBuscador">
+                            <a href="" ng-click="buscador.limpiar()">Limpiar Buscador</a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div ng-repeat="res in buscador.results">
+                        <div ng-include="'/tpl/buscador/cliente.html'"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Container principal -->
+        <div id="page-wrapper">
+            <div ng-controller="LoaderCtrl" class="fade-animation" ng-show="cargandoSitio" id="LoaderLC">
+                <div id="LoaderLCText">
+                    Loading...<br />
+                    <i class="fa fa-spin fa-spinner"></i>
+                </div>
+            </div>
+
+            <div class="row" style="padding-left: 40px; padding-right: 40px; padding-top: 20px;">
+                <div ng-view></div>
+            </div>
+        <!-- /#page-wrapper -->
+        </div>
+    <!-- /#wrapper -->
+    </div>
 </body>
 </html>
