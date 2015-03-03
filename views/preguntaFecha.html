@@ -1,10 +1,15 @@
 <div class="form-group">
-	<label>{{pregunta.titulo}}</label>
+    <div class="questionTitle">
+        <label>{{pregunta.titulo}}</label>
+    </div>
+    <div class="containerOptions">
+        <pre >Fecha seleccionada: <em>{{pregunta.respuesta | date:'fullDate' }}</em></pre>
 
-	<pre>Fecha seleccionada: <em>{{dt | date:'fullDate' }}</em></pre>
-
-	<div style="display:inline-block; min-height:290px;">
-	    <datepicker ng-model="dt" show-weeks="true" class="well well-sm"></datepicker>
-	</div>
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker ng-model="pregunta.respuesta" show-weeks="true" class="well well-sm"></datepicker>
+        </div>
+    </div>
 
 </div>
+
+

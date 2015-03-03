@@ -42,9 +42,8 @@
 
 	<!-- debugger -->
 	<div class="debugger">
-		<div ng-click="debugger = !debugger" style="cursor: pointer;"><u>mati_was_here</u></div>
+		<div ng-click="debugger = !debugger" style="cursor: pointer;"><u>DEBUGGER</u></div>
 		<div ng-show="debugger">
-			<b><u>DEBUGGER</b></u>
 			<div ng-repeat="pregunta in encuesta.preguntas">
 				<b><i>Pregunta {{$index}} - respuesta:</i></b> {{pregunta.respuesta}}
 			</div>
