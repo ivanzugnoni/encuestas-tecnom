@@ -1,7 +1,13 @@
 <div class="form-group">
-    <div class="questionTitle">
+    <div class="questionTitle" ng-show="pregunta.respuesta" style="border-bottom: 1px solid #5cb85c;">
+        <i class="fa fa-check" style="color:#5cb85c; font-size:10px;"></i>
         <label>{{pregunta.titulo}}</label>
     </div>
+    <div class="questionTitle" ng-hide="pregunta.respuesta" style="border-bottom: 1px solid #d9534f;">
+        <i class="fa fa-asterisk" style="color:#d9534f; font-size:8px;"></i>
+        <label>{{pregunta.titulo}}</label>
+    </div>
+
     <div class="containerOptions">
         <pre >Fecha seleccionada: <em>{{pregunta.respuesta | date:'fullDate' }}</em></pre>
 

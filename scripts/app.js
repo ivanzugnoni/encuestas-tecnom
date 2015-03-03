@@ -5,6 +5,7 @@ var encuestasApp = angular.module('encuestasApp', [
     'ngRoute',
     'ui.bootstrap',
     'ngAnimate',
+    'checklist-model',
 ]);
 
 encuestasApp.config(['$routeProvider', function($routeProvider){

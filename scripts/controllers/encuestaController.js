@@ -89,7 +89,7 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
             {
                 "id":"nombre",
                 "tipo":"texto",
-                "titulo":"Opcionalmente deje su nombre"
+                "titulo":"Ingrese su nombre y apellido"
             },
             {
                 "id":"nombre",
@@ -113,6 +113,15 @@ encuestasApp.controller('encuestaController',['$scope', function($scope){
                 ]
             },
         ]
+    }
+
+    $scope.preguntasRespondidas=function(value) {
+        if(!value.respuesta || value.respuesta == "") {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     $scope.radioModel = '5 Muy satisfecho';

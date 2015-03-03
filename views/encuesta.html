@@ -18,40 +18,40 @@
         <div class="row">
             <div class="col-sm-12" ng-repeat="pregunta in encuesta.preguntas">
 
-			<!-- TIPO MULTIPLE CHOICE -->
-			<div ng-if="pregunta.tipo == 'multiple-choice'">
-				<pregunta-multiple-choice></pregunta-multiple-choice>
-			</div>
+    			<!-- TIPO MULTIPLE CHOICE -->
+    			<div ng-if="pregunta.tipo == 'multiple-choice'">
+    				<pregunta-multiple-choice></pregunta-multiple-choice>
+    			</div>
 
-			<!-- TIPO TEXTO-->
-			<div ng-if="pregunta.tipo == 'texto'">
-				<pregunta-texto></pregunta-texto>
-			</div>
+    			<!-- TIPO TEXTO-->
+    			<div ng-if="pregunta.tipo == 'texto'">
+    				<pregunta-texto></pregunta-texto>
+    			</div>
 
-			<!-- TIPO TEXTO PARRAFO -->
-			<div ng-if="pregunta.tipo == 'texto-parrafo'">
-				<pregunta-texto-parrafo></pregunta-texto-parrafo>
-			</div>
+    			<!-- TIPO TEXTO PARRAFO -->
+    			<div ng-if="pregunta.tipo == 'texto-parrafo'">
+    				<pregunta-texto-parrafo></pregunta-texto-parrafo>
+    			</div>
 
-			<!-- TIPO CHECKLIST-->
-			<div ng-if="pregunta.tipo == 'checklist'">
-				<pregunta-checklist></pregunta-checklist>
-			</div>
+    			<!-- TIPO CHECKLIST-->
+    			<div ng-if="pregunta.tipo == 'checklist'">
+    				<pregunta-checklist></pregunta-checklist>
+    			</div>
 
-			<!-- TIPO FECHA-->
-			<div ng-if="pregunta.tipo == 'fecha'">
-				<pregunta-fecha></pregunta-fecha>
-			</div>
+    			<!-- TIPO FECHA-->
+    			<div ng-if="pregunta.tipo == 'fecha'">
+    				<pregunta-fecha></pregunta-fecha>
+    			</div>
 
-			<!-- TIPO NUMERO-->
-			<div ng-if="pregunta.tipo == 'numero'">
-				<pregunta-numero></pregunta-numero>
-			</div>
+    			<!-- TIPO NUMERO-->
+    			<div ng-if="pregunta.tipo == 'numero'">
+    				<pregunta-numero></pregunta-numero>
+    			</div>
 
-			<!-- TIPO GRILLA-->
-			<div ng-if="pregunta.tipo == 'grilla'">
-				<pregunta-grilla></pregunta-grilla>
-			</div>
+    			<!-- TIPO GRILLA-->
+    			<div ng-if="pregunta.tipo == 'grilla'">
+    				<pregunta-grilla></pregunta-grilla>
+    			</div>
 
             </div>
         </div>
@@ -59,13 +59,20 @@
 
 	<!-- debugger -->
 	<div class="debugger">
-		<div ng-click="debugger = !debugger" style="cursor: pointer;"><u>DEBUGGER</u></div>
+		<div ng-click="debugger = !debugger" style="cursor: pointer;"><u>DEBUGGER 2.0</u></div>
 		<div ng-show="debugger">
 			<div ng-repeat="pregunta in encuesta.preguntas">
-				<b><i>Pregunta {{$index}} - respuesta:</i></b> {{pregunta.respuesta}}
+				<b><i>Pregunta {{$index+1}} - respuesta:</i></b> {{pregunta.respuesta}}
 			</div>
 			<div>
-				total= {{encuesta.preguntas.length}}
+                <br>
+                respondidas / total = {{(encuesta.preguntas | filter: preguntasRespondidas).length}} / {{encuesta.preguntas.length}}
+                <progressbar class="progress-striped active" value="valueProgressBar" type="success">
+                    {{ ((encuesta.preguntas | filter: preguntasRespondidas).length / encuesta.preguntas.length) * 100 | number:2 }}%
+                </progressbar>
+                <span style="display:none;">
+                    {{ valueProgressBar = ((encuesta.preguntas | filter: preguntasRespondidas).length / encuesta.preguntas.length) * 100 | number:2 }}%
+                </span>
 			</div>
 		</div>
 	</div>
