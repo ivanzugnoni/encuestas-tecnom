@@ -1,9 +1,15 @@
 body {
+    margin: 0 auto !important;
+    max-width: 1280px;
     font-size: 12px;
 }
 
-#logoTecnom {
-	margin-top: 10px;
+#logoTecnom{
+    margin-top: 9px; margin-left: 28px; opacity: 0.70; float: left;
+}
+
+#logoTecnom:hover {
+    opacity: 0.90;
 }
 
 .encuestaDescription {
@@ -26,7 +32,7 @@ body {
     padding-left: 10px;
     padding-top: 5px;
     margin-bottom: 7px;
-    margin-top: 30px;
+    margin-top: 15px;
     border-bottom: 1px solid #ddd;
     border-top: 4px solid #ddd;
 }
@@ -37,6 +43,16 @@ body {
     margin-top: 2px;
 }
 
+.page-header {
+    padding-bottom: 0px;
+    margin: 40px 0 0;
+    border-bottom: 0px solid #eee;
+}
+
+.panel-body {
+    padding-top: 0px;
+}
+
 .debugger {
     position: fixed;
     left: 10px;
@@ -45,4 +61,115 @@ body {
     background-color: #f0ad4e;
     width:200px;
 }
+
+/* navbar */
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0px;
+    font-size: 14px;
+}
+
+.dropdown-menu.notifLabCom > li.divider{
+    margin:0!important;
+}
+
+.dropdown-menu.notifLabCom > div > li.divider{
+    margin:0!important;
+}
+
+.dropdown-menu.notifLabCom > div > li > a{
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333;
+}
+
+.noLeida{
+    background-color:#FFFFE0;
+}
+
+.closeNotif:hover .fa-circle-o,
+        .closeNotif .fa-circle {
+            display: none;
+        }
+
+        .closeNotif:hover .fa-circle {
+            display: inline;
+        }
+
+.dropdown-menu.notifLabCom{
+    padding:0;
+}
+
+.noNotif{
+    padding-top: 6px!important;
+    padding-bottom: 6px!important;
+}
+
+.linkNotifMobile{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+}
+
+.ulNotifMobile{
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    top: 50px;
+    margin-left: -133px;
+}
+
+.notifLabCom{
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.verTodasNotif > a{
+    text-align:center;
+}
+
+.dropdown-menu.notifLabCom > li.divider{
+    margin:0!important;
+}
+
+.dropdown-menu.notifLabCom > div > li.divider{
+    margin:0!important;
+}
+
+.hayNotis{
+    color:#fff;
+}
+
+.bg-danger {
+  background-color: #fe402b !important;
+  color: #fff !important;
+}
+
+.noHayNotis{
+    color:#999;
+}
+
+.closeNotif{
+    cursor:pointer;
+    float: right;
+    padding: 0!important;
+    clear: none!important;
+    float:left;
+    color:#B6B5B5!important;
+}
+
+.closeNotif:hover{
+    color:#333!important;
+}
+
+.linkNotif{
+    float:left;
+    width:94%;
+}
+/* fin navbar */
+
+
 
