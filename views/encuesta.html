@@ -1,44 +1,61 @@
-<div>
-	<h1>{{encuesta.descripcion}}</h1>
-	<div ng-repeat="pregunta in encuesta.preguntas">
+<master-header>
+    <header-titulo-full>
+        <h1>
+            <span>{{encuesta.descripcion}}</span>
+            <small>
+                <span>
+                   <span>encuesta</span>
+                </span>
+            </small>
+        </h1>
+    </header-titulo-full>
+</master-header>
 
-		<!-- TIPO MULTIPLE CHOICE -->
-		<div ng-if="pregunta.tipo == 'multiple-choice'">
-			<pregunta-multiple-choice></pregunta-multiple-choice>
-		</div>
+<div class="form-horizontal clearfix" role="form">
 
-		<!-- TIPO TEXTO-->
-		<div ng-if="pregunta.tipo == 'texto'">
-			<pregunta-texto></pregunta-texto>
-		</div>
+    <!-- Preguntas de la encuesta -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12" ng-repeat="pregunta in encuesta.preguntas">
 
-		<!-- TIPO TEXTO PARRAFO -->
-		<div ng-if="pregunta.tipo == 'texto-parrafo'">
-			<pregunta-texto-parrafo></pregunta-texto-parrafo>
-		</div>
+			<!-- TIPO MULTIPLE CHOICE -->
+			<div ng-if="pregunta.tipo == 'multiple-choice'">
+				<pregunta-multiple-choice></pregunta-multiple-choice>
+			</div>
 
-		<!-- TIPO CHECKLIST-->
-		<div ng-if="pregunta.tipo == 'checklist'">
-			<pregunta-checklist></pregunta-checklist>
-		</div>
+			<!-- TIPO TEXTO-->
+			<div ng-if="pregunta.tipo == 'texto'">
+				<pregunta-texto></pregunta-texto>
+			</div>
 
-		<!-- TIPO FECHA-->
-		<div ng-if="pregunta.tipo == 'fecha'">
-			<pregunta-fecha></pregunta-fecha>
-		</div>
+			<!-- TIPO TEXTO PARRAFO -->
+			<div ng-if="pregunta.tipo == 'texto-parrafo'">
+				<pregunta-texto-parrafo></pregunta-texto-parrafo>
+			</div>
 
-		<!-- TIPO NUMERO-->
-		<div ng-if="pregunta.tipo == 'numero'">
-			<pregunta-numero></pregunta-numero>
-		</div>
+			<!-- TIPO CHECKLIST-->
+			<div ng-if="pregunta.tipo == 'checklist'">
+				<pregunta-checklist></pregunta-checklist>
+			</div>
 
-		<!-- TIPO GRILLA-->
-		<div ng-if="pregunta.tipo == 'grilla'">
-			<pregunta-grilla></pregunta-grilla>
-		</div>
+			<!-- TIPO FECHA-->
+			<div ng-if="pregunta.tipo == 'fecha'">
+				<pregunta-fecha></pregunta-fecha>
+			</div>
 
-	</div>
+			<!-- TIPO NUMERO-->
+			<div ng-if="pregunta.tipo == 'numero'">
+				<pregunta-numero></pregunta-numero>
+			</div>
 
+			<!-- TIPO GRILLA-->
+			<div ng-if="pregunta.tipo == 'grilla'">
+				<pregunta-grilla></pregunta-grilla>
+			</div>
+
+            </div>
+        </div>
+    </div>
 
 	<!-- debugger -->
 	<div class="debugger">
@@ -54,6 +71,5 @@
 		</div>
 	</div>
 	<!-- debugger -->
-
 
 </div>
